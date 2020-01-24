@@ -1,0 +1,9 @@
+/*	1)首先读取客户端的Cookie，然后判断是否存在一个名称为“myCookie”的Cookie，如果存在则输出其值；
+        	如果不存在则设置一个名称为“myCookie”，值为“Fedor”的Cookie，并提示用户“cookie has been set”。
+	2)调整IE浏览器的Cookie安全设置，然后运行调试本程序。*/
+
+package com.example.zjut03;
+
+public class ShowMyCookies {
+
+}

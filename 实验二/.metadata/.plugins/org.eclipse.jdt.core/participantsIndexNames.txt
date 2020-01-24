@@ -1,0 +1,9 @@
+INDEX VERSION 1.131
+C:\Users\hp\Desktop\实验\Web应用实验\实验二\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2554952501.index
+\zjut\src
+C:\Users\hp\Desktop\实验\Web应用实验\实验二\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\693941659.index
+\zjut\src
+C:\Users\hp\Desktop\实验\Web应用实验\实验二\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1034727513.index
+\zjut\src
+C:\Users\hp\Desktop\实验\Web应用实验\实验二\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2103063362.index
+\zjut\src

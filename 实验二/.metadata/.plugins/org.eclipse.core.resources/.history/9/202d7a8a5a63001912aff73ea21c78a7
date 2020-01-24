@@ -1,0 +1,121 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+
+<link href="login.css" rel="stylesheet" type="text/css">
+<!--
+使用外部链接CSS文件的方式
+1）使用CSS样式定义使得“用户名”，“密码”，“校验密码”等文本输入框的背景色为淡蓝色(lightblue)，文字颜色为红色，文本框边框凹陷显示。
+2）使用pseudo伪类选择符使超链接“注册帮助信息请点击这里”在访问前是蓝色，访问后是灰色，鼠标停留为红色，激活为黑色。-->
+<style type="text/css"> /*内部样式表建在head内*/
+div {
+	line-height: 30px;
+}
+
+/*让表格居中*/
+* {
+	padding: 0px;
+	margin: 0 auto;
+	font-size: 25px;
+}
+
+/*文字居中显示*/
+.form-row-button, .form-row-click {
+	text-align: center;
+}
+</style>
+
+</head>
+
+
+<body>
+	<section class="contacts">
+		<fieldset class="contact-form">
+			<!--表单-->
+			<form action="reg_check.jsp" method="post" id="contact"
+				onsubmit="return check()">
+				<!--表单的提交方法 表格校验-->
+				<table>
+					<tr class="form-row">
+						<td colspan="2">
+							<p style="text-align: center">用户注册信息</p>
+						</td>
+					</tr>
+					<tr class="form-row">
+						<td><label class="contact"><strong>用户名</strong> </label></td>
+						<td><label for="name"></label> <input type="text" name="name"
+							id="name" required="required" autofocus="autofocus"
+							class="contact-input"></td>
+					</tr>
+					<tr class="form-row">
+						<td><label class="contact"><strong>密 码</strong> </label></td>
+						<td><input type="text" name="password" id="password"
+							required="required" placeholder="" class="contact-input">
+						</td>
+					</tr>
+					<tr class="form-row">
+						<td><label class="contact"><strong>校验密码</strong> </label></td>
+						<td><input type="text" name="re_password" id="re_password"
+							required="required" placeholder="" class="contact-input">
+						</td>
+					</tr>
+					<tr class="form-row">
+						<td><label class="contact"><strong>籍 贯</strong> </label></td>
+						<td><select name="age" id="age" size="1">
+								<option value="1" selected="selected">浙江</option>
+								<option value="2">江苏</option>
+								<option value="3">安徽</option>
+								<option value="4">河北</option>
+								<option value="5">河南</option>
+						</select></td>
+					</tr>
+					<tr class="form-row">
+						<td><label class="contact"><strong>兴趣爱好</strong> </label></td>
+						<td><label><input type="checkbox" name="interest"
+								id="interest1" value="篮球" />篮球</label> <label><input
+								type="checkbox" name="interest" id="interest2" value="足球" />足球</label>
+							<label><input type="checkbox" name="interest"
+								id="interest3" value="书法" />书法</label> <label><input
+								type="checkbox" name="interest" id="interest4" value="音乐" />音乐</label>
+							<div>
+								<label><input type="checkbox" name="interest"
+									id="interest5" value="绘画" />绘画</label> <label><input
+									type="checkbox" name="interest" id="interest6" value="散打" />散打</label>
+								<label><input type="checkbox" name="interest"
+									id="interest7" value="瑜伽" />瑜伽</label> <label><input
+									type="checkbox" name="interest" id="interest8" value="其他" />其他</label>
+							</div></td>
+					</tr>
+					<tr class="form-row">
+						<td><label class="contact"><strong>政治面貌</strong> </label></td>
+						<td><label for="zzmm1"> <input type="radio"
+								name="zzmm" id="zzmm1" value="党员">党员
+						</label> <label for="zzmm2"> <input type="radio" name="zzmm"
+								id="zzmm2" value="团员">团员
+						</label> <label for="zzmm3"> <input type="radio" name="zzmm"
+								id="zzmm3" value="群众">群众
+						</label></td>
+					</tr>
+					<tr class="form-row-button">
+						<td><input type="submit" value="提   交" class="send">&nbsp;
+						</td>
+						<td><input type="button" value="重   置" class="send">
+						</td>
+					</tr>
+					<tr class="form-row-click">
+						<td colspan="2">
+							<p>
+								<a href="#">注册帮助信息请点这里</a>
+							</p> <!--超链接-->
+						</td>
+					</tr>
+				</table>
+			</form>
+		</fieldset>
+	</section>
+</body>
+</html>

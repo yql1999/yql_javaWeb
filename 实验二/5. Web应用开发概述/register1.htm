@@ -1,0 +1,26 @@
+<html>
+<head>
+<script language="JavaScript" type="text/javascript">
+  function response(test_form){
+    var person = test_form.name.value;
+    var years = eval(test_form.age.value)+1;
+    document.open();
+    document.writeln("<html><body>");
+    document.writeln("Hello,"+person+".<br>");
+document.writeln("Prediction:next year
+ you will be "+years+".");
+    document.writeln("</body></html>");
+  }
+</script>
+</head>
+<body>
+<form action="">
+Please enter your name:
+<input type="text" name="name"><br>
+Please enter your age:
+<input type="text" name="age"><br>
+<input type="button" value="submit"
+ onclick="response(this.form)">
+</form>
+</body>
+</html>

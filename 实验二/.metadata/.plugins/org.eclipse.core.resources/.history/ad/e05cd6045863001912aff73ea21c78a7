@@ -1,0 +1,25 @@
+@charset "UTF-8";
+/*1）使用CSS样式定义使得“用户名”，“密码”，“校验密码”等文本输入框的背景色为淡蓝色(lightblue)，文字颜色为红色，文本框边框凹陷显示*/
+.contact-input {
+	background-color: lightblue;
+	color: red;
+	border-style: groove;
+	/*box-shadow: 5px 5px rgba(0, 0, 0, 0.5);*/
+}
+
+/*使用pseudo伪类选择符使超链接“注册帮助信息请点击这里”在访问前是蓝色，访问后是灰色，鼠标停留为红色，激活为黑色*/
+a:link {
+	color: blue;
+}
+
+a:visited {
+	color: black;
+}
+
+a:hover {
+	color: red;
+}
+
+a:active {
+	color: gray;
+}

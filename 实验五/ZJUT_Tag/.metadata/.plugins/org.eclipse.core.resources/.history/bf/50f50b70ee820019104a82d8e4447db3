@@ -1,0 +1,34 @@
+package com.tag;
+
+import javax.servlet.jsp.*;
+import javax.servlet.jsp.tagext.*;
+import java.io.*;
+
+public class MarkerTag extends SimpleTagSupport {
+	private String str = "sh";
+	private int count = 0; // countÊôÐÔ
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
+	public void doTag() throws JspException, IOException {
+		JspWriter out = getJspContext().getOut();
+		StringWriter sw = new StringWriter();
+		getJspBody().invoke(sw);
+		String text = sw.toString();
+
+		int len = str.length();
+		int oldIndex = 0, newIndex = 0;
+		while ((newIndex = text.indexOf(str, oldIndex)) >= 0 && count > 0) {
+			count--;
+			if (newIndex < oldIndex) {
+				break;
+			}
+			out.print(text.substring(oldIndex, newIndex));
+			out.print("<b><font color='blue' size='15'>" + str + "</font></b>");
+			oldIndex = newIndex + len;
+		}
+		out.print(text.substring(oldIndex));
+	}
+}

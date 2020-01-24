@@ -1,0 +1,53 @@
+<%@page contentType="text/html;charset=gb2312" %>
+<%@page import="java.sql.*" %>
+<%
+    //加载驱动器类
+  try
+  {
+      Class.forName("com.microsoft.jdbc.sqlserver.SQLServerDriver").newInstance();
+  }catch(ClassNotFoundException e){
+      e.printStackTrace();
+  }
+
+  Connection conn=null; //定义数据库连接类
+  Statement statement=null;
+  int count=0;
+  
+  String dbName="test";
+  String user = "sa";
+  String password = "sa";
+  String url = "jdbc:microsoft:sqlserver://localhost:1433;DatabaseName="+dbName;
+  out.print("数据库连接URL为："+url+"<br><br><br>");
+  conn = DriverManager.getConnection(url, user, password);
+  
+  
+  conn.setAutoCommit(false); //不自动进行事务提交
+  statement=conn.createStatement();
+  
+  try{
+    count=statement.executeUpdate("insert into student(stuId,stuName) values('5','李世民')");
+    out.print("1.数据插入成功！新增"+Integer.toString(count)+"条记录<br>");
+    conn.commit();
+    
+    count=statement.executeUpdate("insert into student(stuId,stuName) values('6','刘彻')");
+    out.print("2.数据插入成功！新增"+Integer.toString(count)+"条记录<br>");
+    
+    count=statement.executeUpdate("insert into student(stuId,stuName) values('7','玄烨')");
+    out.print("3.数据插入成功！新增"+Integer.toString(count)+"条记录<br>");
+    conn.rollback();
+    count=statement.executeUpdate("insert into student(stuId,stuName) values('8','杨坚')");
+    out.print("4.数据插入成功！新增"+Integer.toString(count)+"条记录<br>");
+    
+    conn.commit();
+    
+    statement.close();
+    conn.close();
+  
+  }catch(Exception ex){
+    //ex.printStackTrace();
+    out.print("<font color=red size=7>");
+	out.print(ex);
+	out.print("</font>");
+	conn.rollback();
+  }
+%>

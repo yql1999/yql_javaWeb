@@ -1,0 +1,7 @@
+127.0.0.1 - - [17/May/2019:14:48:15 +0800] "GET / HTTP/1.1" 404 1068
+0:0:0:0:0:0:0:1 - - [17/May/2019:14:48:16 +0800] "GET /zjut_MVC/ HTTP/1.1" 404 1081
+0:0:0:0:0:0:0:1 - - [17/May/2019:14:48:30 +0800] "GET /zjut_MVC/userinfo.jsp HTTP/1.1" 200 329
+0:0:0:0:0:0:0:1 - - [17/May/2019:14:48:40 +0800] "GET /zjut_MVC/register.jsp HTTP/1.1" 200 980
+0:0:0:0:0:0:0:1 - - [17/May/2019:14:48:57 +0800] "POST /zjut_MVC/Controller?action=register HTTP/1.1" 200 589
+0:0:0:0:0:0:0:1 - - [17/May/2019:14:49:02 +0800] "POST /zjut_MVC/Controller?action=login HTTP/1.1" 200 635
+0:0:0:0:0:0:0:1 - - [17/May/2019:14:49:08 +0800] "POST /zjut_MVC/Controller?action=login HTTP/1.1" 200 342

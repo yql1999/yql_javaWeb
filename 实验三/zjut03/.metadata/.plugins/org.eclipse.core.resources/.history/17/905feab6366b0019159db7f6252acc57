@@ -1,0 +1,76 @@
+/*
+1)在向客户端响应的页面上输出需要猜测的数；
+2)在向客户端响应的页面上输出用户猜测的数；
+3)在向客户端响应的页面上输出会话ID以及是否为新会话（参考书本程序3.2）。
+4)设置猜测时间最长为20秒，如果超时，则提示用户“Time out, you lost”；
+*/
+
+
+package com.example.zjut03;
+
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import javax.servlet.annotation.WebServlet;
+
+@WebServlet("/GuessNumberServlet")
+public class GuessNumberServlet extends HttpServlet{
+	
+   public void doGet(HttpServletRequest request,
+                         HttpServletResponse response)
+                         throws ServletException, IOException {
+     int magic = (int)(Math.random()*101);
+     HttpSession session = request.getSession();
+     session.setMaxInactiveInterval(20);	//设置session生命周期为20s
+     session.setAttribute("num",new Integer(magic));
+     
+     response.setContentType("text/html;charset=utf-8");
+     PrintWriter out = response.getWriter();
+     out.println("<html><body>");
+     out.println("我想出一个0到100之间的数，请你猜！");
+     out.println("<form action='/zjut03/GuessNumberServlet' method='post'>");
+     out.println("<input type='text' name='guess' />");
+     out.println("<input type='submit' value='确定'/>");
+     out.println("</form>");
+     out.println("</body></html>");
+   }
+   
+   public void doPost(HttpServletRequest request,
+                           HttpServletResponse response)
+                       throws ServletException, IOException {
+     int guess = Integer.parseInt(request.getParameter("guess"));	//要进行强制类型转换
+     HttpSession session = request.getSession();
+     int magic = (Integer)session.getAttribute("num");
+     
+     response.setContentType("text/html;charset=utf-8");
+     PrintWriter out = response.getWriter();
+     out.println("<html><body>");
+     //判断session是否超时
+     if(request.getSession(false)==null) {
+    	 out.println("Sorry! Your waiting time is over 20 seconds, session has been invalidated!"+"<br>");
+     }else {
+    	 out.println("Session is active!"+"<br>");
+     }
+     out.println("会话ID为："+(String)session.getId()+"<br>");
+     out.println("该会话是否为新会话？"+(session.isNew() ? "YES" : "NO")+"<br>");
+     
+     if(guess==magic){
+     	 session.invalidate(); // 销毁会话对象
+     	 out.println("祝贺你，答对了!");
+     	 out.println("<a href='/zjut03/GuessNumberServlet'>再猜一次.</a>");
+     }else if(guess>magic){
+     	 out.println("太大了! 请重猜!");
+     }else{
+          out.println("太小了! 请重猜!");
+     }
+     out.println("<form action='/zjut03/GuessNumberServlet'method='post'>");
+     out.println("<input type='text' name='guess' />");
+     out.println("<input type='submit' value='确定'/>");
+     out.println("</form>");
+     out.println("<br>");
+     out.println("-------------------------------------"+"<br>");
+     out.println("需要猜测的数为："+magic+"<br>");
+     out.println("用户猜测的数为："+guess+"<br>");
+     out.println("</body></html>");
+   }
+}
